@@ -16,7 +16,6 @@ import {Link} from "react-router-dom";
 const Product = (data) => {
     const [product, setProduct] = useState(data);
     const dispatch = useDispatch();
-
     function clickAdd() {
         dispatch(addCart(product));
     }
@@ -24,14 +23,15 @@ const Product = (data) => {
     return (
         <MDBCol style={{maxWidth: "22rem"}}>
             <MDBCard>
-                <MDBCardImage className="img-fluid" src={product.img}
+                <MDBCardImage className="img-fluid"
+                              src={product.img}
                               waves/>
                 <MDBCardBody>
                     <MDBCardTitle>{product.name}</MDBCardTitle>
                     <MDBCardText>{product.des}</MDBCardText>
                     <MDBBtn onClick={clickAdd}>{product.price}</MDBBtn>
-                    <Link className={MDBBtn.displayName} to={`/product/${product.id}`}>
-                        <MDBBtn>Xem chi tiết</MDBBtn>
+                    <Link to={`/product/${product.id}`}>
+                        <MDBBtn  className={"rounded-pill"}>Xem chi tiết</MDBBtn>
                     </Link>
 
                 </MDBCardBody>

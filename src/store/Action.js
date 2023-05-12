@@ -1,5 +1,3 @@
-import product from "../Component/Product";
-
 export const loadProduct = (data) => {
     return {
         type: 'product/load',
