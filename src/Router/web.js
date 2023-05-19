@@ -5,6 +5,8 @@ import CartPage from "../Page/CartPage";
 import ListProductPage from "../Page/ListProductPage";
 import UserPage from "../Page/UserPage";
 import DetailProductPage from "../Page/DetailProductPage";
+import ContactPage from "../Page/ContactPage";
+import ShippingPage from "../Page/ShippingPage";
 
 export const webRouter = createBrowserRouter([{
     path: '/',
@@ -26,6 +28,12 @@ export const webRouter = createBrowserRouter([{
     }, {
         path: 'detail-product-page',
         element: <DetailProductPage/>
+    }, {
+        path: 'contact',
+        element: <ContactPage/>
+    }, {
+        path: 'shipping',
+        element: <ShippingPage/>
     }]
 
 }])
