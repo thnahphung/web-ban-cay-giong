@@ -4,6 +4,8 @@ import { loadProduct, ProductDetail } from "../Component/ProductDetail";
 import CartPage from "../Page/CartPage";
 import ListProductPage from "../Page/ListProductPage";
 import IntroducePage from "../Page/IntroducePage";
+import LoginPage from "../Page/LoginPage";
+import MainPage from "../Page/MainPage";
 
 export const webRouter = createBrowserRouter([{
     path: '/',
@@ -24,7 +26,13 @@ export const webRouter = createBrowserRouter([{
     }, {
         path: 'gioi-thieu',
         element: <IntroducePage />
-    }
+    }, {
+        path: 'dang-nhap',
+        element: <LoginPage />
+    }, {
+            path: 'trang-chu',
+            element: <MainPage/>
+        }
     ]
 
 }])
