@@ -1,1 +1,0 @@
-# MDB React Mobile

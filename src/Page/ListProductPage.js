@@ -3,8 +3,8 @@ import React, {Fragment, useEffect} from "react";
 import ProductList from "../Component/ProductList";
 import {loadProduct} from "../store/Action";
 import {products as p} from "../Data/ProductData";
-import {MDBBtn} from "mdbreact";
-import {Link} from "react-router-dom";
+import {MDBBtn, MDBSideNavLink} from "mdbreact";
+import {Link, NavLink} from "react-router-dom";
 
 
 const ListProductPage = () => {
