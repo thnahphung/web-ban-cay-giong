@@ -1,31 +1,30 @@
-import {createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import {loadProduct, ProductDetail} from "../Component/ProductDetail";
+import { loadProduct, ProductDetail } from "../Component/ProductDetail";
 import CartPage from "../Page/CartPage";
 import ListProductPage from "../Page/ListProductPage";
-import UserPage from "../Page/UserPage";
-import DetailProductPage from "../Page/DetailProductPage";
+import IntroducePage from "../Page/IntroducePage";
 
 export const webRouter = createBrowserRouter([{
     path: '/',
-    element: <App/>,
+    element: <App />,
     children: [{
-        path: 'list-product',
-        element: <ListProductPage/>,
-
+        path: 'danh-muc',
+        element: <ListProductPage />,
     }, {
-        path: 'product/:idProduct',
-        element: <ProductDetail/>,
+        path: 'san-pham/:idProduct',
+        element: <ProductDetail />,
         loader: loadProduct
     }, {
-        path: 'cart',
-        element: <CartPage/>
+        path: 'gio-hang',
+        element: <CartPage />
     }, {
-        path: 'user-page',
-        element: <UserPage/>
+        path: 'tin-tuc',
+        element: <CartPage />
     }, {
-        path: 'detail-product-page',
-        element: <DetailProductPage/>
-    }]
+        path: 'gioi-thieu',
+        element: <IntroducePage />
+    }
+    ]
 
 }])

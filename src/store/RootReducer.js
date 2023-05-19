@@ -17,7 +17,6 @@ export const root = (state = initState, action) => {
                     ...state.cart,
                     action.payload
                 ]
-
             }
         }
         default:

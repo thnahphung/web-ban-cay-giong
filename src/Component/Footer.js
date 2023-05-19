@@ -55,7 +55,7 @@ const Footer = () => {
 
 
                         <h6 className="text-uppercase font-weight-bold">Company name</h6>
-                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
                         <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit
                             amet,
                             consectetur
@@ -66,7 +66,7 @@ const Footer = () => {
                     <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
                         <h6 className="text-uppercase font-weight-bold">Products</h6>
-                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
                         <p>
                             <a className="dark-grey-text" href="#">MDBootstrap</a>
                         </p>
@@ -85,7 +85,7 @@ const Footer = () => {
                     <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
                         <h6 className="text-uppercase font-weight-bold">Useful links</h6>
-                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
                         <p>
                             <a className="dark-grey-text" href="#">Your Account</a>
                         </p>
@@ -105,7 +105,7 @@ const Footer = () => {
 
 
                         <h6 className="text-uppercase font-weight-bold">Contact</h6>
-                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
                         <p>
                             <i className="fas fa-home mr-3"></i> New York, NY 10012, US</p>
                         <p>

@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {Outlet} from "react-router-dom";
+import Header from "./Component/Header";
+import Footer from "./Component/Footer";
 
 function App() {
     return (
-        <div className={"App"}>
+        <Fragment>
+            <Header/>
             <Outlet/>
-        </div>
+            <Footer/>
+        </Fragment>
     );
 }
 

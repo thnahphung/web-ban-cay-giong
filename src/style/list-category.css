@@ -1,0 +1,12 @@
+.title-category{
+    color: #2bbbad;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.category-item .active{
+    border-bottom: #2bbbad solid 1px !important;
+}
+.category-item:hover{
+    color: #2bbbad !important;
+}
