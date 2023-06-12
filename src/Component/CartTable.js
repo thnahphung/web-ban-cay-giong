@@ -10,91 +10,95 @@ import {
     MDBInput,
     MDBBtn,
 } from "mdbreact";
+import {useSelector} from "react-redux";
 
 const CartTable = () => {
-    const state = {
-        data: [
-            {
-                src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.webp",
-                title: "iPhone",
-                subTitle: "Apple",
-                color: "White",
-                price: "800",
-                qty: "2",
-            },
-            {
-                src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/6.webp",
-                title: "Headphones",
-                subTitle: "Sony",
-                color: "Red",
-                price: "200",
-                qty: "2",
-            },
-            {
-                src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/1.webp",
-                title: "iPad Pro",
-                subTitle: "Apple",
-                color: "Gold",
-                price: "600",
-                qty: "1",
-            },
-        ],
-        columns: [
-            {
-                label: "",
-                field: "img",
-            },
-            {
-                label: <strong style={{fontSize: '20px'}}>Sản phẩm</strong>,
-                field: "product",
-            },
-            {
-                label: <strong style={{fontSize: '20px'}}>Giá</strong>,
-                field: "price",
-            },
-            {
-                label: <strong style={{fontSize: '20px'}}>Số lượng</strong>,
-                field: "qty",
-            },
-            {
-                label: <strong style={{fontSize: '20px'}}>Tổng</strong>,
-                field: "amount",
-            },
-            {
-                label: "",
-                field: "button",
-            },
-        ],
-    };
+    const cart = useSelector(state => state.cart);
+    console.log(cart);
+
+    // const data = [];
+    //
+    // cart.map((product) => {
+    //     data.push(product);
+    // })
+    // {
+    //     src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.webp",
+    //         title: "iPhone",
+    //     subTitle: "Apple",
+    //     color: "White",
+    //     price: "800",
+    //     qty: "2",
+    // },
+    // {
+    //     src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/6.webp",
+    //         title: "Headphones",
+    //     subTitle: "Sony",
+    //     color: "Red",
+    //     price: "200",
+    //     qty: "2",
+    // },
+    // {
+    //     src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/1.webp",
+    //         title: "iPad Pro",
+    //     subTitle: "Apple",
+    //     color: "Gold",
+    //     price: "600",
+    //     qty: "1",
+    // },
+    const columns = [
+        {
+            label: "",
+            field: "img",
+        },
+        {
+            label: <strong style={{fontSize: '20px'}}>Sản phẩm</strong>,
+            field: "product",
+        },
+        {
+            label: <strong style={{fontSize: '20px'}}>Giá</strong>,
+            field: "price",
+        },
+        {
+            label: <strong style={{fontSize: '20px'}}>Số lượng</strong>,
+            field: "qty",
+        },
+        {
+            label: <strong style={{fontSize: '20px'}}>Tổng</strong>,
+            field: "amount",
+        },
+        {
+            label: "",
+            field: "button",
+        },
+    ];
 
     const rows = [];
-    const {columns, data} = state;
 
-    data.map((row) => {
+    cart.map((product) => {
         return rows.push({
-            img: <img src={row.src} alt="" className="img-fluid z-depth-0"/>,
+            img: <img src={product.image[0]} alt="" className="img-fluid z-depth-0"/>,
             product: [
                 <h5 className="mt-3" key={new Date().getDate + 1}>
-                    <strong>{row.title}</strong>
+                    <strong>{product.name}</strong>
                 </h5>,
             ],
             // color: row.color,
-            price: `$${row.price}`,
+            price: `${product.salePrice} Đ`,
             qty: (
                 <MDBInput
                     type="number"
-                    default={row.qty}
+                    valueDefault={product.rate}
                     className="form-control"
                     style={{width: "100px"}}
                 />
             ),
-            amount: <strong>${row.qty * row.price}</strong>,
+            amount: <strong>{product.salePrice} Đ</strong>,
             button: (
                 <MDBTooltip placement="top">
                     <MDBBtn floating size="sm" color={"danger"}>
                         X
                     </MDBBtn>
-                    <div>Remove item</div>
+                    <div>Xóa</div>
                 </MDBTooltip>
             ),
         });
