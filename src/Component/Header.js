@@ -2,14 +2,14 @@ import {
     MDBNav,
     MDBNavItem
 } from "mdbreact";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Search from "./Search";
 
 const Header = () => {
     return (
         <header>
             <div className={`mb-4`}>
-                <Search/>
+                <Search />
                 <MDBNav pills className="flex-center">
                     <MDBNavItem>
                         <NavLink to="/" className={`nav-link`}>Trang chủ</NavLink>
