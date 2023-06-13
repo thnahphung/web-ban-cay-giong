@@ -16,9 +16,20 @@ export const loadCategoryNow = (category) => {
         payload: category
     }
 }
-export const addCart = (product) => {
+export const addCart = (product, amount) => {
     return {
         type: 'cart/add',
+        payload: {
+            product: product,
+            amount: amount
+        }
+
+    }
+}
+
+export const removeCart = (product) => {
+    return {
+        type: 'cart/remove',
         payload: product
     }
 }

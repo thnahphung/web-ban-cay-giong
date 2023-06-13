@@ -7,10 +7,10 @@ const CartPage = () => {
     return (
         <MDBContainer>
             <MDBRow>
-                <MDBCol md={8}>
+                <MDBCol md={`8`}>
                     <CartTable/>
                 </MDBCol>
-                <MDBCol md={4}>
+                <MDBCol md={`4`} className={`mt-2`}>
                     <Bill/>
                 </MDBCol>
             </MDBRow>
