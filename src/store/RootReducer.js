@@ -17,13 +17,28 @@ export const root = (state = initState, action) => {
             }
         }
         case 'cart/add': {
+            const newCart = [...state.cart];
+            const itemIndex = newCart.findIndex(item => item.product.id === action.payload.product.id);
+            if (itemIndex !== -1) {
+                newCart[itemIndex] = {
+                    ...newCart[itemIndex],
+                    amount: action.payload.amount
+                };
+            } else {
+                newCart.push(action.payload);
+            }
+
             return {
                 ...state,
-                cart: [
-                    ...state.cart,
-                    action.payload
-                ]
-            }
+                cart: newCart
+            };
+        }
+        case 'cart/remove': {
+            const newCart = state.cart.filter(item => item.product.id !== action.payload.id);
+            return {
+                ...state,
+                cart: newCart
+            };
         }
         case 'product/loading': {
             return {
