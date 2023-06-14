@@ -1,39 +1,49 @@
-import {createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import {loadProduct, ProductDetail} from "../Component/ProductDetail";
+import { loadProduct, ProductDetail } from "../Component/ProductDetail";
 import CartPage from "../Page/CartPage";
-import ListProductPage from "../Page/ListProductPage";
-import UserPage from "../Page/UserPage";
-import DetailProductPage from "../Page/DetailProductPage";
-import ContactPage from "../Page/ContactPage";
-import ShippingPage from "../Page/ShippingPage";
+import ListProductPage, { loadProductsByCategory } from "../Page/ListProductPage";
+import IntroducePage from "../Page/IntroducePage";
+import { loadCategories } from "../store/Action";
+import { loadProductsBySearch } from "../Component/Search";
+import LoginPage from "../Page/LoginPage";
+import MainPage from "../Page/MainPage";
 
 export const webRouter = createBrowserRouter([{
     path: '/',
-    element: <App/>,
+    element: <App />,
     children: [{
-        path: 'list-product',
-        element: <ListProductPage/>,
-
+        path: 'san-pham',
+        element: <ListProductPage />,
+        loader: loadProductsByCategory
     }, {
-        path: 'product/:idProduct',
-        element: <ProductDetail/>,
+        path: 'san-pham/:idProduct',
+        element: <ProductDetail />,
         loader: loadProduct
     }, {
-        path: 'cart',
-        element: <CartPage/>
+        path: 'gio-hang',
+        element: <CartPage />
     }, {
-        path: 'user-page',
-        element: <UserPage/>
+        path: 'tin-tuc',
+        element: <CartPage />
     }, {
-        path: 'detail-product-page',
-        element: <DetailProductPage/>
+        path: 'gioi-thieu',
+        element: <IntroducePage />
     }, {
-        path: 'contact',
-        element: <ContactPage/>
+        path: ':urlParam',
+        element: <ListProductPage />,
+        loader: loadProductsByCategory
     }, {
-        path: 'shipping',
-        element: <ShippingPage/>
-    }]
+        path: 'tim-kiem',
+        element: <ListProductPage />,
+        loader: loadProductsBySearch
+    }, {
+        path: 'dang-nhap',
+        element: <LoginPage />
+    }, {
+        path: 'trang-chu',
+        element: <MainPage />
+    }
+    ]
 
 }])
