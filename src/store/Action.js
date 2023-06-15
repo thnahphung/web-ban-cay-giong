@@ -59,3 +59,9 @@ export const loadLink = (link) => {
         payload: link
     }
 }
+export const loadListNews = (listNews) => {
+    return {
+        type: 'listNews/loading',
+        payload: listNews
+    }
+}

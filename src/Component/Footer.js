@@ -1,4 +1,19 @@
+import {useEffect} from "react";
+import CategoryApi from "../api/CategoryApi";
+import {loadCategories} from "../store/Action";
+import {useDispatch, useSelector} from "react-redux";
+import {Link} from "react-router-dom";
+
 const Footer = () => {
+    const categories = useSelector(state => state.categories);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        const fetchCategories = async () => {
+            const data = await CategoryApi.getAll();
+            dispatch(loadCategories(data))
+        }
+        fetchCategories().catch(console.error);
+    }, [])
     return (
         <footer className="page-footer font-small blue-grey lighten-5">
 
@@ -8,7 +23,7 @@ const Footer = () => {
                     <div className="row py-4 d-flex align-items-center">
 
                         <div className="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-                            <h6 className="mb-0">Get connected with us on social networks</h6>
+                            <h6 className="mb-0">Kết nối với chúng tôi thông qua mạng xã hội</h6>
                         </div>
 
 
@@ -54,47 +69,30 @@ const Footer = () => {
                     <div className="col-md-3 col-lg-4 col-xl-3 mb-4">
 
 
-                        <h6 className="text-uppercase font-weight-bold">Company name</h6>
-                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
-                        <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit
-                            amet,
-                            consectetur
-                            adipisicing elit.</p>
+                        <h6 className="text-uppercase font-weight-bold">Về công ty</h6>
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
+                        <p>Chúng tôi tự hào giới thiệu đến bạn một trải nghiệm tuyệt vời trong việc mua sắm cây giống
+                            trực tuyến. Trang web của chúng tôi cung cấp một loạt các loại cây giống đa dạng và chất
+                            lượng.</p>
 
                     </div>
 
                     <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
-                        <h6 className="text-uppercase font-weight-bold">Products</h6>
-                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
-                        <p>
-                            <a className="dark-grey-text" href="#">MDBootstrap</a>
-                        </p>
-                        <p>
-                            <a className="dark-grey-text" href="#">MDWordPress</a>
-                        </p>
-                        <p>
-                            <a className="dark-grey-text" href="#">BrandFlow</a>
-                        </p>
-                        <p>
-                            <a className="dark-grey-text" href="#">Bootstrap Angular</a>
-                        </p>
-
+                        <h6 className="text-uppercase font-weight-bold">Sản phẩm</h6>
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
+                        {categories.map(category => {
+                            return (<p>
+                                <Link className="dark-grey-text" href="#"
+                                      to={`/${category.urlParam}`}>{category.name}</Link>
+                            </p>)
+                        })}
                     </div>
 
                     <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
-                        <h6 className="text-uppercase font-weight-bold">Useful links</h6>
-                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
-                        <p>
-                            <a className="dark-grey-text" href="#">Your Account</a>
-                        </p>
-                        <p>
-                            <a className="dark-grey-text" href="#">Become an Affiliate</a>
-                        </p>
-                        <p>
-                            <a className="dark-grey-text" href="#">Shipping Rates</a>
-                        </p>
+                        <h6 className="text-uppercase font-weight-bold">Hữu ích</h6>
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
                         <p>
                             <a className="dark-grey-text" href="#">Help</a>
                         </p>
@@ -104,16 +102,15 @@ const Footer = () => {
                     <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
 
-                        <h6 className="text-uppercase font-weight-bold">Contact</h6>
-                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
+                        <h6 className="text-uppercase font-weight-bold">Liên hệ</h6>
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
                         <p>
-                            <i className="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                            <i className="fas fa-home mr-3"></i> Quận 9, Thủ Đức, Hồ Chí Minh</p>
                         <p>
-                            <i className="fas fa-envelope mr-3"></i> info@example.com</p>
+                            <i className="fas fa-envelope mr-3"></i> bancaygiong@gmail.com</p>
                         <p>
-                            <i className="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                        <p>
-                            <i className="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                            <i className="fas fa-phone mr-3"></i> + 84 123456</p>
+
 
                     </div>
 

@@ -1,48 +1,53 @@
-import { createBrowserRouter } from "react-router-dom";
+import {createBrowserRouter} from "react-router-dom";
 import App from "../App";
-import { loadProduct, ProductDetail } from "../Component/ProductDetail";
+import {loadProduct, ProductDetail} from "../Component/ProductDetail";
 import CartPage from "../Page/CartPage";
-import ListProductPage, { loadProductsByCategory } from "../Page/ListProductPage";
+import ListProductPage, {loadProductsByCategory} from "../Page/ListProductPage";
 import IntroducePage from "../Page/IntroducePage";
-import { loadCategories } from "../store/Action";
-import { loadProductsBySearch } from "../Component/Search";
+import {loadProductsBySearch} from "../Component/Search";
 import LoginPage from "../Page/LoginPage";
 import MainPage from "../Page/MainPage";
+import NewsPage from "../Page/NewsPage";
+import DetailNewsPage, {loadDetailNewsPage} from "../Page/DetailNewsPage";
 
 export const webRouter = createBrowserRouter([{
     path: '/',
-    element: <App />,
+    element: <App/>,
     children: [{
         path: 'san-pham',
-        element: <ListProductPage />,
+        element: <ListProductPage/>,
         loader: loadProductsByCategory
     }, {
         path: 'san-pham/:idProduct',
-        element: <ProductDetail />,
+        element: <ProductDetail/>,
         loader: loadProduct
     }, {
         path: 'gio-hang',
-        element: <CartPage />
+        element: <CartPage/>
     }, {
         path: 'tin-tuc',
-        element: <CartPage />
+        element: <NewsPage/>
     }, {
         path: 'gioi-thieu',
-        element: <IntroducePage />
+        element: <IntroducePage/>
+    }, {
+        path: 'tin-tuc/:newsUrl',
+        element: <DetailNewsPage/>,
+        loader: loadDetailNewsPage
     }, {
         path: ':urlParam',
-        element: <ListProductPage />,
+        element: <ListProductPage/>,
         loader: loadProductsByCategory
     }, {
         path: 'tim-kiem',
-        element: <ListProductPage />,
+        element: <ListProductPage/>,
         loader: loadProductsBySearch
     }, {
         path: 'dang-nhap',
-        element: <LoginPage />
+        element: <LoginPage/>
     }, {
         path: 'trang-chu',
-        element: <MainPage />
+        element: <MainPage/>
     }
     ]
 

@@ -6,7 +6,8 @@ const initState = {
     categoryNow: {},
     paginationCount: 0,
     paginationNow: 1,
-    link: {}
+    link: {},
+    listNews: []
 }
 export const root = (state = initState, action) => {
     switch (action.type) {
@@ -74,6 +75,12 @@ export const root = (state = initState, action) => {
             return {
                 ...state,
                 categoryNow: action.payload
+            }
+        }
+        case 'listNews/loading': {
+            return {
+                ...state,
+                listNews: action.payload
             }
         }
         default:
