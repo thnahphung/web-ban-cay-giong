@@ -1,30 +1,50 @@
 .flyout {
-	display:flex;
+	display: flex;
 	flex-direction: column;
-	min-height:100vh;
+	min-height: 100vh;
 	justify-content: space-between;
 }
 
 .home-feature-box .fa {
-	font-size:6rem;
+	font-size: 6rem;
 }
 
 .home-feature-box span {
 	display: block;
-	color:#111;
-	font-weight:bold;
-	margin-top:1.5rem;
+	color: #111;
+	font-weight: bold;
+	margin-top: 1.5rem;
 }
 
-.example-components-list li > a {
-  color: #495057;
+.example-components-list li>a {
+	color: #495057;
 }
 
-.example-components-list li:last-child > a {
-	border-bottom:0;
+.example-components-list li:last-child>a {
+	border-bottom: 0;
 }
 
-.example-components-list li > a .fa {
-	color:rgba(0,0,0,.35);
-	float:right;
+.example-components-list li>a .fa {
+	color: rgba(0, 0, 0, .35);
+	float: right;
+}
+
+@media (min-width: 1200px) {
+
+	.container,
+	.container-lg,
+	.container-md,
+	.container-sm,
+	.container-xl {
+		max-width: 1280px;
+	}
+}
+
+.dashed-border {
+	border: 1px dashed #000;
+	/* Màu và kiểu đường viền gạch đứt */
+}
+
+.cursor-pointer {
+	cursor: pointer;
 }
