@@ -1,6 +1,8 @@
+import {loadCartFromLocalStorage} from "./SupportFuntion";
+
 const initState = {
     products: [],
-    cart: [],
+    cart: loadCartFromLocalStorage(),
     loadingProduct: false,
     categories: [],
     categoryNow: {},
@@ -28,7 +30,7 @@ export const root = (state = initState, action) => {
             } else {
                 newCart.push(action.payload);
             }
-
+            localStorage.setItem('cart', JSON.stringify(newCart));
             return {
                 ...state,
                 cart: newCart
@@ -36,6 +38,15 @@ export const root = (state = initState, action) => {
         }
         case 'cart/remove': {
             const newCart = state.cart.filter(item => item.product.id !== action.payload.id);
+            localStorage.setItem('cart', JSON.stringify(newCart));
+            return {
+                ...state,
+                cart: newCart
+            };
+        }
+        case 'cart/reset': {
+            const newCart =[]
+            localStorage.setItem('cart', JSON.stringify(newCart));
             return {
                 ...state,
                 cart: newCart

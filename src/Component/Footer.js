@@ -15,7 +15,7 @@ const Footer = () => {
         fetchCategories().catch(console.error);
     }, [])
     return (
-        <footer className="page-footer font-small blue-grey lighten-5">
+        <footer className="page-footer font-small blue-grey lighten-5 mt-4">
 
             <div className='default-color'>
                 <div className="container">
@@ -82,7 +82,7 @@ const Footer = () => {
                         <h6 className="text-uppercase font-weight-bold">Sản phẩm</h6>
                         <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
                         {categories.map(category => {
-                            return (<p>
+                            return (<p key={category.id}>
                                 <Link className="dark-grey-text" href="#"
                                       to={`/${category.urlParam}`}>{category.name}</Link>
                             </p>)

@@ -33,7 +33,11 @@ export const removeCart = (product) => {
         payload: product
     }
 }
-
+export const resetCart = () => {
+    return {
+        type: 'cart/reset'
+    }
+}
 export const showLoadingProduct = (loading) => {
     return {
         type: 'product/loading',

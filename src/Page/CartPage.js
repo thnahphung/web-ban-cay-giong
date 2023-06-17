@@ -11,7 +11,7 @@ const CartPage = () => {
                     <CartTable/>
                 </MDBCol>
                 <MDBCol md={`4`} className={`mt-2`}>
-                    <Bill/>
+                    <Bill link={'/thanh-toan'} label={'Tiếp tục'} disableBtn={false}/>
                 </MDBCol>
             </MDBRow>
         </MDBContainer>
