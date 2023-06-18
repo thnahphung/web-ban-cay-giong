@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useRef} from "react";
 import {
     MDBRow,
     MDBCard,
@@ -10,41 +10,21 @@ import {
     MDBInput,
     MDBBtn,
 } from "mdbreact";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {addCart, removeCart} from "../store/Action";
 
 const CartTable = () => {
     const cart = useSelector(state => state.cart);
-    console.log(cart);
+    const dispatch = useDispatch();
 
-    // const data = [];
-    //
-    // cart.map((product) => {
-    //     data.push(product);
-    // })
-    // {
-    //     src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.webp",
-    //         title: "iPhone",
-    //     subTitle: "Apple",
-    //     color: "White",
-    //     price: "800",
-    //     qty: "2",
-    // },
-    // {
-    //     src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/6.webp",
-    //         title: "Headphones",
-    //     subTitle: "Sony",
-    //     color: "Red",
-    //     price: "200",
-    //     qty: "2",
-    // },
-    // {
-    //     src: "https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/1.webp",
-    //         title: "iPad Pro",
-    //     subTitle: "Apple",
-    //     color: "Gold",
-    //     price: "600",
-    //     qty: "1",
-    // },
+    function handleChangeInput(e, product) {
+        dispatch(addCart(product, parseInt(e.target.value)))
+    }
+
+    function handleRemove(product) {
+        dispatch(removeCart(product))
+    }
+
     const columns = [
         {
             label: "",
@@ -74,28 +54,31 @@ const CartTable = () => {
 
     const rows = [];
 
-    cart.map((product) => {
+    cart.map((item) => {
         return rows.push({
-            img: <img src={product.image[0]} alt="" className="img-fluid z-depth-0"/>,
+            img: <img src={item.product.image[0]} alt="" className="img-fluid z-depth-0"/>,
             product: [
                 <h5 className="mt-3" key={new Date().getDate + 1}>
-                    <strong>{product.name}</strong>
+                    <strong>{item.product.name}</strong>
                 </h5>,
             ],
-            // color: row.color,
-            price: `${product.salePrice} Đ`,
+            price: `${item.product.salePrice.toLocaleString('en-US').replaceAll(',', '.')}`,
             qty: (
                 <MDBInput
                     type="number"
-                    valueDefault={product.rate}
+                    valueDefault={item.amount}
                     className="form-control"
                     style={{width: "100px"}}
+                    onChange={(e, product) => handleChangeInput(e, item.product)}
+                    min={1}
+                    max={10}
                 />
             ),
-            amount: <strong>{product.salePrice} Đ</strong>,
+            amount:
+                <strong>{(item.product.salePrice * item.amount).toLocaleString('en-US').replaceAll(',', '.')}</strong>,
             button: (
                 <MDBTooltip placement="top">
-                    <MDBBtn floating size="sm" color={"danger"}>
+                    <MDBBtn floating size="sm" color={"danger"} onClick={() => handleRemove(item.product)}>
                         X
                     </MDBBtn>
                     <div>Xóa</div>

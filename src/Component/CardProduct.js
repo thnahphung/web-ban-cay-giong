@@ -13,20 +13,23 @@ import {
 
 import Rating from "./Rating";
 import { addCart } from "../store/Action";
-import { useDispatch } from "react-redux";
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 
 const CardProduct = (data) => {
     const product = data.product;
+    const cart = useSelector(state => state.cart);
     const dispatch = useDispatch();
 
-    function handleAdd() {
-        dispatch(addCart(product));
+    function handleAdd(product) {
+        const item = cart.find(item => item.product.id === product.id);
+        if (item === undefined)
+            dispatch(addCart(product, 1));
+        else dispatch(addCart(product, item.amount + 1));
     }
 
     return (
-        <MDBCard className="mb-3 h-[426px]" >
-            <MDBBtn floating color='default' className='button-add-cart' onClick={handleAdd}>
+        <MDBCard className="mb-3">
+            <MDBBtn floating color='default' className='button-add-cart' onClick={() => handleAdd(product)}>
                 <MDBIcon icon="cart-plus" />
             </MDBBtn>
             <MDBView hover zoom>
@@ -47,10 +50,12 @@ const CardProduct = (data) => {
                     </MDBCardTitle>
                 </Link>
                 {product.originPrice === product.salePrice ?
-                    <span className='font-weight-bold blue-text mr-3'> 10.000 Đ</span> :
+                    <span
+                        className='font-weight-bold blue-text mr-3'>{product.salePrice.toLocaleString('en-US').replaceAll(',', '.')} Đ</span> :
                     <>
-                        <span className='font-weight-bold blue-text mr-3'> 10.000 Đ</span>
-                        <span className='font-weight-bold blue-grey-text'><del>15.000 Đ</del></span>
+                        <span
+                            className='font-weight-bold blue-text mr-3'>{product.salePrice.toLocaleString('en-US').replaceAll(',', '.')} Đ</span>
+                        <span className='font-weight-bold blue-grey-text'><del>{product.originPrice.toLocaleString('en-US').replaceAll(',', '.')} Đ</del></span>
                     </>
                 }
 
