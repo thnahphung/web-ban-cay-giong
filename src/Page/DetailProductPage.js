@@ -45,9 +45,11 @@ const DetailProductPage = () => {
                         <MDBCol md="">
                             <Image listImage={product.image} />
                         </MDBCol>
-                        <MDBCol> <Introduce /> </MDBCol>
+                        <MDBCol> <Introduce product={product} /> </MDBCol>
                     </MDBRow>
+                    <div className="descriptionProduct mt-5" dangerouslySetInnerHTML={{ __html: product.description }}></div>
                     <CommentPage />
+
                     <SameProduct />
                 </div>
             </MDBContainer>

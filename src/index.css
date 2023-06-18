@@ -48,3 +48,11 @@
 .cursor-pointer {
 	cursor: pointer;
 }
+
+.descriptionProduct img {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	margin: auto
+}

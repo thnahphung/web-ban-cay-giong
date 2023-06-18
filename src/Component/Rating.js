@@ -6,6 +6,7 @@ const Rating = (data) => {
 
     const listStar = []
 
+
     for (let i = 0; i < 5; i++) {
         if (i < rateNumber)
             listStar.push(<MDBIcon key={i} icon="star" className='orange-text ml-1' />)
