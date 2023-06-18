@@ -10,6 +10,7 @@ import {
     MDBView,
     MDBIcon
 } from 'mdbreact';
+import { Link } from 'react-router-dom';
 
 import Rating from "./Rating";
 import { addCart } from "../store/Action";

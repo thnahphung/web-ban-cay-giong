@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MDBTypography, MDBBox, MDBBtn, MDBInput, MDBContainer } from 'mdbreact';
 import Rating from '../Rating';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCart } from '../../store/Action';
+
 
 const Introduce = (data) => {
     const product = data.product;
+    const cart = useSelector(state => state.cart);
+    const [amount, setAmount] = useState();
+
+    const dispatch = useDispatch();
+
+    function handleAdd(product) {
+        let quantity = parseInt(amount.value);
+        const item = cart.find(item => item.product.id === product.id);
+        if (item === undefined)
+            dispatch(addCart(product, quantity));
+        else dispatch(addCart(product, item.amount + quantity));
+    }
     return (
 
         <MDBContainer className={'flex-1 '}>
@@ -47,8 +62,9 @@ const Introduce = (data) => {
                     style={{ width: "60px" }}
                     min={1}
                     max={10}
+                    inputRef={setAmount}
                 />
-                <MDBBtn>Thêm vào giỏ hàng
+                <MDBBtn onClick={() => handleAdd(product)}>Thêm vào giỏ hàng
                 </MDBBtn>
                 {/* <h1><i class="fas fa-heart" ></i></h1> */}
                 <h1> <i className="far fa-heart cursor-pointer"></i></h1>
