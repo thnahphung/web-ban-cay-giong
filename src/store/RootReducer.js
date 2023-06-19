@@ -10,7 +10,8 @@ const initState = {
     paginationNow: 1,
     link: {},
     listNews: [],
-    favouriteProducts: loadFavouriteProducts()
+    favouriteProducts: loadFavouriteProducts(),
+    user: null,
 }
 export const root = (state = initState, action) => {
     switch (action.type) {
@@ -57,6 +58,12 @@ export const root = (state = initState, action) => {
             return {
                 ...state,
                 loadingProduct: action.payload
+            }
+        }
+        case 'user/loading': {
+            return {
+                ...state,
+                user: action.payload
             }
         }
         case 'categories/load': {

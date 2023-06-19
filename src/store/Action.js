@@ -4,6 +4,12 @@ export const loadProducts = (data) => {
         payload: data
     }
 }
+export const loadUser = (data) => {
+    return {
+        type: 'user/loading',
+        payload: data
+    }
+}
 export const loadCategories = (categories) => {
     return {
         type: 'categories/load',

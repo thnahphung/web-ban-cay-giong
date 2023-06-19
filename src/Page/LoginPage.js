@@ -1,41 +1,67 @@
 import {MDBBtn, MDBCard, MDBCol, MDBContainer, MDBInput, MDBRow} from "mdbreact";
+import {useState} from "react";
+import UserApi from "../api/UserApi";
+import {useDispatch, useSelector} from "react-redux";
+import {loadUser} from "../store/Action";
 
-const LoginPage = () =>{
+const LoginPage = () => {
+    const user = useSelector(state => state.user);
+    const dispatch = useDispatch();
+    const [phone, setPhone] = useState();
+
+    function handleCode() {
+        const fetchUsers = async () => {
+            const params = {
+                phone: phone.value
+            }
+            const data = await UserApi.getAll(params);
+
+            if (data.length > 0){
+                sessionStorage.setItem('user',JSON.stringify(data[0]));
+                console.log(data);
+                dispatch(loadUser(data[0]));
+            }
+        }
+        fetchUsers().catch(console.error);
+    }
+
     return (
         <MDBContainer>
-            <MDBRow className='flex-center mt-5' >
+            <MDBRow className='flex-center mt-5'>
                 <MDBCol md="6">
-                  <MDBCard >  <form className='p-5'>
-                        <p className="h1 text-center mb-4">ĐĂNG NHẬP</p>
-                        <div>
-                           <div className='d-flex flex-row justify-content-between' >
-                            <div style={{width:"300px"}}>
+                    <MDBCard>
+                        <form className='p-5'>
+                            <p className="h1 text-center mb-4">ĐĂNG NHẬP</p>
+                            <div>
+                                <div className='d-flex flex-row justify-content-between'>
+                                    <div style={{width: "300px"}}>
+                                        <MDBInput
+                                            className='align-self'
+                                            label="Nhập số điện thoại của bạn"
+                                            icon="envelope"
+                                            group
+                                            type="email"
+                                            validate
+                                            error="wrong"
+                                            success="right"
+                                            inputRef={setPhone}
+                                        />
+                                    </div>
+                                    <MDBBtn className='align-self-center' rounded color='default' >Nhận mã</MDBBtn>
+                                </div>
                                 <MDBInput
-                                    className= 'align-self'
-                                label="Nhập mail của bạn"
-                                icon="envelope"
-                                group
-                                type="email"
-                                validate
-                                error="wrong"
-                                success="right"
+                                    label="Nhập mã xác nhận"
+                                    icon="lock"
+                                    group
+                                    type="text"
+                                    validate
                                 />
                             </div>
-                            <MDBBtn className= 'align-self-center' rounded color='default'>Nhận mã</MDBBtn>
-                        </div>
-                            <MDBInput
-                                label="Nhập mã xác nhận"
-                                icon="lock"
-                                group
-                                type="text"
-                                validate
-                            />
-                        </div>
-                        <div className="text-center">
-                            <MDBBtn rounded color='default'>Đăng Nhập</MDBBtn>
-                        </div>
-                    </form>
-                  </MDBCard>
+                            <div className="text-center">
+                                <MDBBtn rounded color='default' onClick={handleCode}>Đăng Nhập</MDBBtn>
+                            </div>
+                        </form>
+                    </MDBCard>
                 </MDBCol>
             </MDBRow>
         </MDBContainer>

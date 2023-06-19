@@ -10,22 +10,23 @@ import {
     showLoadingProduct
 } from "../store/Action";
 import ProductApi from "../api/ProductApi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Search = () => {
-    sessionStorage.setItem("user", JSON.stringify({
-        "id": 1,
-        "name": "Phú",
-        "email": "th@gmail.com",
-        "phone": "012345678",
-        "informations": [],
-        "cart": [],
-        "updatedAt": 1686997405751,
-        "createdAt": 1616346753759,
-        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL-bdnSJ-NkU6gscunAOsrKDHDnmAeqWXA4YrQHa5yMg&s=10"
-    }));
-    const user = JSON.parse(sessionStorage.getItem("user"));
+    // sessionStorage.setItem("user", JSON.stringify({
+    //     "id": 1,
+    //     "name": "Phú",
+    //     "email": "th@gmail.com",
+    //     "phone": "012345678",
+    //     "informations": [],
+    //     "cart": [],
+    //     "updatedAt": 1686997405751,
+    //     "createdAt": 1616346753759,
+    //     "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL-bdnSJ-NkU6gscunAOsrKDHDnmAeqWXA4YrQHa5yMg&s=10"
+    // }));
+    const user = useSelector(state => state.user);
+    console.log(user)
     const searchRef = useRef(null);
     const dispatch = useDispatch();
 
