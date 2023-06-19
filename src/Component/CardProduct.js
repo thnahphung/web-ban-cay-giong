@@ -49,10 +49,10 @@ const CardProduct = (data) => {
 
                 {product.originPrice === product.salePrice ?
                     <span
-                        className='font-weight-bold blue-text mr-3'>{product.salePrice.toLocaleString('en-US').replaceAll(',', '.')} Đ</span> :
+                        className='font-weight-bold blue-text mr-3'>{product.salePrice.toLocaleString('en-US').replaceAll(',', '.')} VND</span> :
                     <>
                         <span
-                            className='font-weight-bold blue-text mr-3'>{product.salePrice.toLocaleString('en-US').replaceAll(',', '.')} Đ</span>
+                            className='font-weight-bold blue-text mr-3'>{product.salePrice.toLocaleString('en-US').replaceAll(',', '.')} VND</span>
                         <span className='font-weight-bold blue-grey-text'><del>{product.originPrice.toLocaleString('en-US').replaceAll(',', '.')} Đ</del></span>
                     </>
                 }
