@@ -1,17 +1,23 @@
 import Image from "../Component/detail-product/image";
 import Introduce from "../Component/detail-product/introduce";
-import {MDBContainer} from "mdbreact";
-import Footer from "../Component/Footer";
+import { MDBContainer } from "mdbreact";
+import Footer from "../Component/footer";
+import AddressBook from "../Component/detail-product/address-book";
+import SameProduct from "../Component/detail-product/same-product";
 
 const DetailProductPage = () => {
     return (
-        <>
-            <MDBContainer className={'d-flex justify-content-around'} style={{fontFamily: 'Quicksand'}}>
-                <Image/>
-                <Introduce/>
+        <div style={{ fontFamily: 'Quicksand' }}>
+            <AddressBook />
+            <MDBContainer>
+                <div className={'d-flex justify-content-around'}>
+                    <Image />
+                    <Introduce />
+                </div>
+                <SameProduct />
             </MDBContainer>
-            <Footer/>
-        </>
+            <Footer />
+        </div>
     )
 }
 export default DetailProductPage;
