@@ -1,10 +1,10 @@
-import {useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import PageNotFound from "./PageNotFound";
 
 const SuccessfulPage = () => {
     const location = useLocation();
     if (location.state === null) {
-        return (<PageNotFound/>)
+        return (<PageNotFound />)
     }
     const orderId = location.state.orderId;
 

@@ -38,6 +38,18 @@ export const resetCart = () => {
         type: 'cart/reset'
     }
 }
+
+export const addfavouriteProducts = (product) => {
+    return {
+        type: 'favouriteProducts/add',
+        payload: product
+    }
+}
+export const resetFavouriteProducts = () => {
+    return {
+        type: 'favouriteProducts/reset'
+    }
+}
 export const showLoadingProduct = (loading) => {
     return {
         type: 'product/loading',

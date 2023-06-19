@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {useState, useEffect, useRef} from "react";
 import {
     MDBContainer,
     MDBInput,
@@ -17,25 +17,39 @@ const CommentPage = (data) => {
     const rateRef = useRef();
     const product = data.product;
     const [listComment, setListComment] = useState([]);
-    const [countPage, setCountPage] = useState(1);
     const [content, setContent] = useState("");
+    const [pageNow, setPageNow] = useState(1);
     useEffect(() => {
         const fetchComments = async () => {
             const param = {
                 productId: product.id,
-                _page: 1,
+                _page: pageNow,
                 _limit: 3
             }
             const data = await CommentApi.getAll(param);
             setListComment(data.data);
             setCountPage(data.totalCount);
-            console.log(data);
         }
         fetchComments().catch(console.error);
     }, [])
+
+    function loadComment() {
+        setPageNow(pageNow + 1);
+        const fetchComments = async () => {
+            const param = {
+                productId: product.id,
+                _page: pageNow,
+                _limit: 3
+            }
+            const data = await CommentApi.getAll(param);
+            setListComment(listComment.concat(data.data));
+            console.log(listComment)
+        }
+        fetchComments().catch(console.error);
+    }
+
     function handleSubmit() {
         const user = JSON.parse(sessionStorage.getItem("user"));
-        console.log(user.id);
         const fetchComments = async () => {
             const param = {
                 "user": {
@@ -50,8 +64,8 @@ const CommentPage = (data) => {
             const data = await CommentApi.add(param);
             let copyComments = listComment.concat();
             copyComments.unshift(data);
-            setListComment(copyComments)
-            console.log(data);
+            setListComment(copyComments);
+            content.value = '';
         }
         fetchComments().catch(console.error);
     }
@@ -63,22 +77,23 @@ const CommentPage = (data) => {
                 <p className=" mb-0 py-2 text-uppercase"> đánh giá sản phẩm</p>
             </MDBCardHeader>
             <div className="m-5">
-                {listComment.map(comment => (<Comment comment={comment} key={comment.id} />))}
+                {listComment.map(comment => (<Comment comment={comment} key={comment.id}/>))}
             </div>
+            <div style={{display: "flex", justifyContent: 'center'}}><MDBBtn flat size={"lg"} onClick={loadComment}>Xem
+                thêm...</MDBBtn></div>
             <div className="d-flex">
                 <h5><strong className="text-nowrap t-1">Chất lượng sản phẩm</strong></h5>
-                <RatingComment ref={rateRef} />
+                <RatingComment ref={rateRef}/>
             </div>
 
             <div className="form-group ">
-                <MDBInput type="textarea" label="Đánh giá" rows="2" inputRef={setContent} />
+                <MDBInput type="textarea" label="Đánh giá" rows="2" inputRef={setContent}/>
                 <div className="text-center px-6 py-3">
                     <MDBBtn rounded size="xl" onClick={handleSubmit}>
                         Đánh giá
                     </MDBBtn>
                 </div>
             </div>
-            <Pagination countPage={countPage} />
         </MDBContainer>
     );
 };

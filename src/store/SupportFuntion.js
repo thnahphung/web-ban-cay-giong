@@ -1,5 +1,5 @@
 export const loadCartFromLocalStorage = () => {
-    return JSON.parse(localStorage.getItem('cart'));
+    return JSON.parse(localStorage.getItem('cart')) || [];
 }
 export const cartTotal = (cart) => {
     let total = 0;
@@ -7,4 +7,8 @@ export const cartTotal = (cart) => {
         total += item.product.salePrice * item.amount;
     }
     return total;
+}
+
+export const loadFavouriteProducts = () => {
+    return JSON.parse(localStorage.getItem('favouriteProducts')) || [];
 }
