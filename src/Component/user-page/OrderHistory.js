@@ -1,12 +1,14 @@
 import React from 'react';
-import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
+import {MDBTable, MDBTableBody, MDBTableHead} from 'mdbreact';
 
-const BasicTable = () => {
+const BasicTable = (data) => {
+    const orders = data.orders;
+
     return (
-        <MDBTable striped>
-            <MDBTableHead>
+        <MDBTable className={'mt-5'}>
+            <MDBTableHead color={'default-color'}>
                 <tr>
-                    <th>#</th>
+                    <th>Mã đơn hàng</th>
                     <th>Ngày đặt</th>
                     <th>Trạng thái giao hàng</th>
                     <th>Thanh toán</th>
@@ -14,27 +16,17 @@ const BasicTable = () => {
                 </tr>
             </MDBTableHead>
             <MDBTableBody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                </tr>
+                {orders.map(order => (
+                    <tr>
+                        <td>{order.id}</td>
+                        <td>{order.updatedAt}</td>
+                        <td></td>
+                        <td>Chưa thanh toán</td>
+                        <td>{order.total}</td>
+                    </tr>
+                ))}
+
+
             </MDBTableBody>
         </MDBTable>
     );

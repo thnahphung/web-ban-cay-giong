@@ -1,5 +1,5 @@
 export const loadCartFromLocalStorage = () => {
-    return JSON.parse(localStorage.getItem('cart'));
+    return JSON.parse(localStorage.getItem('cart')) || [];
 }
 export const cartTotal = (cart) => {
     let total = 0;
@@ -28,3 +28,6 @@ export const getStatus = (status) => {
     }
 }
 
+export const loadFavouriteProducts = () => {
+    return JSON.parse(localStorage.getItem('favouriteProducts')) || [];
+}

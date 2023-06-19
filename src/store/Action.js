@@ -4,6 +4,12 @@ export const loadProducts = (data) => {
         payload: data
     }
 }
+export const loadUser = (data) => {
+    return {
+        type: 'user/loading',
+        payload: data
+    }
+}
 export const loadCategories = (categories) => {
     return {
         type: 'categories/load',
@@ -36,6 +42,18 @@ export const removeCart = (product) => {
 export const resetCart = () => {
     return {
         type: 'cart/reset'
+    }
+}
+
+export const addfavouriteProducts = (product) => {
+    return {
+        type: 'favouriteProducts/add',
+        payload: product
+    }
+}
+export const resetFavouriteProducts = () => {
+    return {
+        type: 'favouriteProducts/reset'
     }
 }
 export const showLoadingProduct = (loading) => {

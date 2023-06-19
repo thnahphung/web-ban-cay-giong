@@ -1,4 +1,4 @@
-import {loadCartFromLocalStorage} from "./SupportFuntion";
+import { loadCartFromLocalStorage, loadFavouriteProducts } from "./SupportFuntion";
 
 const initState = {
     products: [],
@@ -9,7 +9,9 @@ const initState = {
     paginationCount: 0,
     paginationNow: 1,
     link: {},
-    listNews: []
+    listNews: [],
+    favouriteProducts: loadFavouriteProducts(),
+    user: null,
 }
 export const root = (state = initState, action) => {
     switch (action.type) {
@@ -45,7 +47,7 @@ export const root = (state = initState, action) => {
             };
         }
         case 'cart/reset': {
-            const newCart =[]
+            const newCart = []
             localStorage.setItem('cart', JSON.stringify(newCart));
             return {
                 ...state,
@@ -56,6 +58,12 @@ export const root = (state = initState, action) => {
             return {
                 ...state,
                 loadingProduct: action.payload
+            }
+        }
+        case 'user/loading': {
+            return {
+                ...state,
+                user: action.payload
             }
         }
         case 'categories/load': {
@@ -93,6 +101,25 @@ export const root = (state = initState, action) => {
                 ...state,
                 listNews: action.payload
             }
+        }
+        case 'favouriteProducts/add': {
+            const newfavouriteProducts = state.favouriteProducts.filter(item => item.id !== action.payload.id);
+            if (newfavouriteProducts.length === state.favouriteProducts.length) {
+                newfavouriteProducts.push(action.payload);
+            }
+            localStorage.setItem('favouriteProducts', JSON.stringify(newfavouriteProducts));
+            return {
+                ...state,
+                favouriteProducts: newfavouriteProducts
+            };
+        }
+        case 'favouriteProducts/reset': {
+            const newfavouriteProducts = []
+            localStorage.setItem('favouriteProducts', JSON.stringify(newfavouriteProducts));
+            return {
+                ...state,
+                favouriteProducts: newfavouriteProducts
+            };
         }
         default:
             return state;
