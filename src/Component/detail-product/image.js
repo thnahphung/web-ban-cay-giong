@@ -15,7 +15,7 @@ const Image = (data) => {
         let arr = [];
         for (let i = 0; i < listImage.length; i++) {
             arr.push(
-                <MDBCarouselItem itemId={i + 1}>
+                <MDBCarouselItem itemId={i + 1} key={i} >
                     <MDBView>
                         <img
                             style={{ height: '500px' }}
@@ -33,7 +33,7 @@ const Image = (data) => {
         let arr = [];
         for (let i = 0; i < listImage.length; i++) {
             arr.push(
-                <MDBCol size="1.5">
+                <MDBCol size="1.5" key={i} >
                     <MDBCardImage
                         hover
                         overlay='white-slight'

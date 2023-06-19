@@ -9,7 +9,6 @@ import AddressBook from "../Component/detail-product/AddressBook";
 import SameProduct from "../Component/detail-product/same-product";
 import { useState } from "react";
 import Loading from "../Component/Loading";
-import Comment from "../Component/detail-product/CommentPage";
 import CommentPage from "../Component/detail-product/CommentPage";
 
 
@@ -17,7 +16,6 @@ const DetailProductPage = () => {
     const [product, setProduct] = useState();
     const urlParam = useLoaderData();
 
-    console.log(product)
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -48,7 +46,7 @@ const DetailProductPage = () => {
                         <MDBCol> <Introduce product={product} /> </MDBCol>
                     </MDBRow>
                     <div className="descriptionProduct mt-5" dangerouslySetInnerHTML={{ __html: product.description }}></div>
-                    <CommentPage />
+                    <CommentPage product={product} />
 
                     <SameProduct />
                 </div>

@@ -3,7 +3,21 @@ import {
     MDBPagination,
     MDBPageNav,
 } from 'mdbreact';
-const Pagination = () => {
+const Pagination = (data) => {
+    const countPage = data.countPage;
+    function createPagination(countPage) {
+        let elements = [];
+        for (let i = 1; i < countPage + 1; i++) {
+            elements.push(
+                <MDBPageItem active={1 === i} key={i}>
+                    <MDBPageNav className="page-link">
+                        {i}
+                    </MDBPageNav>
+                </MDBPageItem>);
+        }
+        return elements;
+    }
+
     return (
         <MDBPagination
             circle
@@ -21,23 +35,7 @@ const Pagination = () => {
                     <span className="sr-only">Previous</span>
                 </MDBPageNav>
             </MDBPageItem>
-            <MDBPageItem active>
-                <MDBPageNav>
-                    1 <span className="sr-only">(current)</span>
-                </MDBPageNav>
-            </MDBPageItem>
-            <MDBPageItem>
-                <MDBPageNav>2</MDBPageNav>
-            </MDBPageItem>
-            <MDBPageItem>
-                <MDBPageNav>3</MDBPageNav>
-            </MDBPageItem>
-            <MDBPageItem>
-                <MDBPageNav>4</MDBPageNav>
-            </MDBPageItem>
-            <MDBPageItem>
-                <MDBPageNav>5</MDBPageNav>
-            </MDBPageItem>
+            {createPagination(Math.ceil(countPage / 3))}
             <MDBPageItem>
                 <MDBPageNav>&raquo;</MDBPageNav>
             </MDBPageItem>

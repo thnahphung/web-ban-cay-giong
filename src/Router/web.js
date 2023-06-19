@@ -7,6 +7,7 @@ import { loadCategories } from "../store/Action";
 import { loadProductsBySearch } from "../Component/Search";
 import LoginPage from "../Page/LoginPage";
 import MainPage from "../Page/MainPage";
+import UserPage from "../Page/UserPage";
 import DetailProductPage, { loadProduct } from "../Page/DetailProductPage";
 
 export const webRouter = createBrowserRouter([{
@@ -43,6 +44,10 @@ export const webRouter = createBrowserRouter([{
     }, {
         path: 'trang-chu',
         element: <MainPage />
+
+    }, {
+        path: 'ca-nhan',
+        element: <UserPage />
     }
     ]
 
