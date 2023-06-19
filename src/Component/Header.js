@@ -14,7 +14,7 @@ const Header = () => {
                 <Search />
                 <MDBNav pills className="flex-center">
                     <MDBNavItem>
-                        <NavLink to="/" className={`nav-link`}>Trang chủ</NavLink>
+                        <NavLink to="/trang-chu" className={`nav-link`}>Trang chủ</NavLink>
                     </MDBNavItem>
                     <MDBNavItem>
                         <NavLink to="/san-pham" className={`nav-link`}>Sản phẩm</NavLink>
