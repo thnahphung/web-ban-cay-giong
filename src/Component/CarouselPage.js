@@ -11,7 +11,7 @@ const CarouselPage = () => {
     return (
             <MDBCarousel
                 activeItem={1}
-                length={3}
+                length={2}
                 showControls={true}
                 showIndicators={true}
                 className="z-depth-1"
@@ -21,7 +21,7 @@ const CarouselPage = () => {
                         <MDBView>
                             <img
                                 className="d-block w-100"
-                                src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).webp"
+                                src="https://caygionggiare.vn/upload/photo/z2281636165925f9da9f1b515dfbd266f251d161ff1550-593.jpg"
                                 alt="First slide"
                             />
                         </MDBView>
@@ -30,17 +30,8 @@ const CarouselPage = () => {
                         <MDBView>
                             <img
                                 className="d-block w-100"
-                                src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).webp"
+                                src="https://caygionggiare.vn/upload/photo/z2281636167104cb945538a86fd5bdeb6796e29a7f6124-2892.jpg"
                                 alt="Second slide"
-                            />
-                        </MDBView>
-                    </MDBCarouselItem>
-                    <MDBCarouselItem itemId="3">
-                        <MDBView>
-                            <img
-                                className="d-block w-100"
-                                src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).webp"
-                                alt="Third slide"
                             />
                         </MDBView>
                     </MDBCarouselItem>

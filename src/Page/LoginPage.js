@@ -38,7 +38,7 @@ const LoginPage = () => {
                                         <MDBInput
                                             className='align-self'
                                             label="Nhập số điện thoại của bạn"
-                                            icon="envelope"
+                                            icon="phone"
                                             group
                                             type="email"
                                             validate
