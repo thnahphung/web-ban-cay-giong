@@ -7,90 +7,60 @@ import {
     MDBContainer, MDBMask, MDBRow, MDBCol, MDBCardImage
 } from "mdbreact";
 
-const Image = () => {
+const Image = (data) => {
+
+    const listImage = data.listImage;
+
+    function createImage() {
+        let arr = [];
+        for (let i = 0; i < listImage.length; i++) {
+            arr.push(
+                <MDBCarouselItem itemId={i + 1} key={i} >
+                    <MDBView>
+                        <img
+                            style={{ height: '500px' }}
+                            className="d-block"
+                            src={listImage[i]}
+                            alt="First slide"
+                        />
+                    </MDBView>
+                </MDBCarouselItem>
+            );
+        }
+        return arr;
+    }
+    function createSubImage() {
+        let arr = [];
+        for (let i = 0; i < listImage.length; i++) {
+            arr.push(
+                <MDBCol size="1.5" key={i} >
+                    <MDBCardImage
+                        hover
+                        overlay='white-slight'
+                        className='card-img-top'
+                        src={listImage[i]}
+                        alt='Card cap'
+                        style={{ objectFit: 'cover', height: '100px', width: '110px' }}
+                    />
+                </MDBCol>
+            );
+        }
+        return arr;
+    }
+
     return (
-        <MDBContainer style={{width: '650px'}}>
-            <MDBCarousel activeItem={1} length={3} showControls={true} showIndicators={true} className="z-depth-1"
-                         style={{width: '600px', height: '500px'}}>
+        <MDBContainer style={{ width: '650px' }} className="d-flex flex-column ">
+            <MDBCarousel activeItem={1} length={listImage.length} showControls={true} showIndicators={true} className="z-depth-1 w-100"
+                style={{ height: '500px' }}>
                 <MDBCarouselInner>
-                    <MDBCarouselItem itemId="1">
-                        <MDBView>
-                            <img
-                                className="d-block"
-                                src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).webp"
-                                alt="First slide"
-                            />
-                            <MDBMask overlay="black-light"/>
-                        </MDBView>
-                    </MDBCarouselItem>
-                    <MDBCarouselItem itemId="2">
-                        <MDBView>
-                            <img
-                                className="d-block"
-                                src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).webp"
-                                alt="Second slide"
-                            />
-                            <MDBMask overlay="black-strong"/>
-                        </MDBView>
-                    </MDBCarouselItem>
-                    <MDBCarouselItem itemId="3">
-                        <MDBView>
-                            <img
-                                className="d-block"
-                                src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).webp"
-                                alt="Third slide"
-                            />
-                            <MDBMask overlay="black-slight"/>
-                        </MDBView>
-                    </MDBCarouselItem>
+                    {createImage()}
                 </MDBCarouselInner>
             </MDBCarousel>
-            <MDBRow className={'d-flex'} style={{width: '600px', marginLeft: '35px', marginTop: '15px'}}>
-                <MDBCol size="1.5" style={{marginRight: '15px'}}>
-                    <MDBCardImage
-                        hover
-                        overlay='white-slight'
-                        className='card-img-top'
-                        src='https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img%20%283%29.webp'
-                        alt='Card cap'
-                        style={{objectFit: 'cover', height: '100px', width: '120px'}}
-                    />
+            <div className="d-flex ">
+                <MDBRow className={'d-flex w-100 justify-content-center gap-2'} style={{ marginTop: '15px' }}>
+                    {createSubImage()}
 
-                </MDBCol>
-                <MDBCol size="1.5" style={{marginRight: '15px'}}>
-                    <MDBCardImage
-                        hover
-                        overlay='white-slight'
-                        className='card-img-top'
-                        src='https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img%20%283%29.webp'
-                        alt='Card cap'
-                        style={{objectFit: 'cover', height: '100px', width: '120px'}}
-                    />
-
-                </MDBCol>
-                <MDBCol size="1.5" style={{marginRight: '15px'}}>
-                    <MDBCardImage
-                        hover
-                        overlay='white-slight'
-                        className='card-img-top'
-                        src='https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img%20%283%29.webp'
-                        alt='Card cap'
-                        style={{objectFit: 'cover', height: '100px', width: '120px'}}
-                    />
-
-                </MDBCol>
-                <MDBCol size="1.5" style={{marginRight: '15px'}}>
-                    <MDBCardImage
-                        hover
-                        overlay='white-slight'
-                        className='card-img-top'
-                        src='https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img%20%283%29.webp'
-                        alt='Card cap'
-                        style={{objectFit: 'cover', height: '100px', width: '120px'}}
-                    />
-
-                </MDBCol>
-            </MDBRow>
+                </MDBRow></div>
         </MDBContainer>
     )
 }

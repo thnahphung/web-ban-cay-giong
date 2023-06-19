@@ -1,8 +1,8 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 import CategoryApi from "../api/CategoryApi";
-import {loadCategories} from "../store/Action";
-import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import { loadCategories } from "../store/Action";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     const categories = useSelector(state => state.categories);
@@ -70,7 +70,7 @@ const Footer = () => {
 
 
                         <h6 className="text-uppercase font-weight-bold">Về công ty</h6>
-                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
                         <p>Chúng tôi tự hào giới thiệu đến bạn một trải nghiệm tuyệt vời trong việc mua sắm cây giống
                             trực tuyến. Trang web của chúng tôi cung cấp một loạt các loại cây giống đa dạng và chất
                             lượng.</p>
@@ -80,11 +80,11 @@ const Footer = () => {
                     <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
                         <h6 className="text-uppercase font-weight-bold">Sản phẩm</h6>
-                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
                         {categories.map(category => {
                             return (<p>
                                 <Link className="dark-grey-text" href="#"
-                                      to={`/${category.urlParam}`}>{category.name}</Link>
+                                    to={`/${category.urlParam}`}>{category.name}</Link>
                             </p>)
                         })}
                     </div>
@@ -92,7 +92,7 @@ const Footer = () => {
                     <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
                         <h6 className="text-uppercase font-weight-bold">Hữu ích</h6>
-                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
                         <p>
                             <a className="dark-grey-text" href="#">Help</a>
                         </p>
@@ -103,7 +103,7 @@ const Footer = () => {
 
 
                         <h6 className="text-uppercase font-weight-bold">Liên hệ</h6>
-                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
+                        <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{ width: "60px" }} />
                         <p>
                             <i className="fas fa-home mr-3"></i> Quận 9, Thủ Đức, Hồ Chí Minh</p>
                         <p>
@@ -129,4 +129,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export default Footer;
