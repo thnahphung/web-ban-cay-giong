@@ -9,7 +9,8 @@ const initState = {
     paginationCount: 0,
     paginationNow: 1,
     link: {},
-    listNews: []
+    listNews: [],
+    user: null,
 }
 export const root = (state = initState, action) => {
     switch (action.type) {
@@ -45,7 +46,7 @@ export const root = (state = initState, action) => {
             };
         }
         case 'cart/reset': {
-            const newCart =[]
+            const newCart = []
             localStorage.setItem('cart', JSON.stringify(newCart));
             return {
                 ...state,
@@ -56,6 +57,12 @@ export const root = (state = initState, action) => {
             return {
                 ...state,
                 loadingProduct: action.payload
+            }
+        }
+        case 'user/loading': {
+            return {
+                ...state,
+                user: action.payload
             }
         }
         case 'categories/load': {
