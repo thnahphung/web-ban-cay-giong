@@ -33,7 +33,11 @@ export const removeCart = (product) => {
         payload: product
     }
 }
-
+export const resetCart = () => {
+    return {
+        type: 'cart/reset'
+    }
+}
 export const showLoadingProduct = (loading) => {
     return {
         type: 'product/loading',
@@ -57,5 +61,11 @@ export const loadLink = (link) => {
     return {
         type: 'link/loading',
         payload: link
+    }
+}
+export const loadListNews = (listNews) => {
+    return {
+        type: 'listNews/loading',
+        payload: listNews
     }
 }
