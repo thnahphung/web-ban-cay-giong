@@ -3,9 +3,9 @@ import {useState} from "react";
 import UserApi from "../api/UserApi";
 import {useDispatch, useSelector} from "react-redux";
 import {loadUser} from "../store/Action";
+import {Link} from "react-router-dom";
 
 const LoginPage = () => {
-    const user = useSelector(state => state.user);
     const dispatch = useDispatch();
     const [phone, setPhone] = useState();
 
@@ -18,7 +18,6 @@ const LoginPage = () => {
 
             if (data.length > 0){
                 sessionStorage.setItem('user',JSON.stringify(data[0]));
-                console.log(data);
                 dispatch(loadUser(data[0]));
             }
         }
@@ -38,7 +37,7 @@ const LoginPage = () => {
                                         <MDBInput
                                             className='align-self'
                                             label="Nhập số điện thoại của bạn"
-                                            icon="envelope"
+                                            icon="phone"
                                             group
                                             type="email"
                                             validate
@@ -58,7 +57,7 @@ const LoginPage = () => {
                                 />
                             </div>
                             <div className="text-center">
-                                <MDBBtn rounded color='default' onClick={handleCode}>Đăng Nhập</MDBBtn>
+                                <Link to={'/trang-chu'}><MDBBtn rounded color='default' onClick={handleCode}>Đăng Nhập</MDBBtn></Link>
                             </div>
                         </form>
                     </MDBCard>
