@@ -71,7 +71,9 @@ const ListProductPage = () => {
         <Fragment>
             <MDBContainer>
                 <MDBRow>
-                    <MDBCol md="3"><ListCategoryBar/></MDBCol>
+                    <MDBCol md="3">
+                        <ListCategoryBar/>
+                    </MDBCol>
                     <MDBCol md="9">
                         <ProductList></ProductList>
                     </MDBCol>

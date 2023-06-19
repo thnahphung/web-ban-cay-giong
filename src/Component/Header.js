@@ -4,8 +4,10 @@ import {
 } from "mdbreact";
 import { NavLink } from "react-router-dom";
 import Search from "./Search";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+
     return (
         <header>
             <div className={`mb-4`}>

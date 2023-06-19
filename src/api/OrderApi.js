@@ -1,26 +1,26 @@
 import AxiosClient from "./AxiosClient";
 
-const CommentApi = {
+const OrderApi = {
     getAll(params) {
-        const url = '/comments';
-        return AxiosClient.get(url, { params })
+        const url = '/orders';
+        return AxiosClient.get(url, {params})
     },
     get(id) {
-        const url = `/comments/${id}`;
+        const url = `/orders/${id}`;
         return AxiosClient.get(url)
     },
     add(data) {
-        const url = '/comments';
+        const url = '/orders';
         return AxiosClient.post(url, data)
     },
     update(data) {
-        const url = `/comments/${data.id}`;
+        const url = `/orders/${data.id}`;
         return AxiosClient.get(url, data)
     },
     remove(id) {
-        const url = `/comments/${id}`;
+        const url = `/orders/${id}`;
         return AxiosClient.get(url)
     }
 }
 
-export default CommentApi;
+export default OrderApi;
