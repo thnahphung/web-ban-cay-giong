@@ -31,7 +31,7 @@ const SliderProduct = (data) => {
         return card;
     }
 
-    if (product == undefined)
+    if (listProduct.length <= 0)
         return (<div style={{height: "600px"}} className='d-flex justify-content-center align-items-center'>
             <Loading/>
         </div>)

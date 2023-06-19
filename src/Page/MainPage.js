@@ -18,11 +18,12 @@ import React, {useEffect, useState} from "react";
 import CategoryApi from "../api/CategoryApi";
 import {loadCategories} from "../store/Action";
 import ProductApi from "../api/ProductApi";
+import CarouselPage from "../Component/CarouselPage";
 
 const MainPage = () => {
     const [newProducts, setNewProduct] = useState([]);
-    const [likeProducts, setLikeProduct] = useState();
-    const [otherProducts, setOtherProduct] = useState();
+    const [likeProducts, setLikeProduct] = useState([]);
+    const [otherProducts, setOtherProduct] = useState([]);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -32,6 +33,7 @@ const MainPage = () => {
             }
             const data = await ProductApi.getAll(params);
             setNewProduct(data);
+            console.log(data);
         }
         fetchProducts().catch(console.error);
     },[])
@@ -60,9 +62,10 @@ const MainPage = () => {
         fetchProducts().catch(console.error);
     },[])
 
-    return (
+    return ( <> <CarouselPage/>
         <MDBContainer>
-            <div className="liner-continer">
+
+            <div className="liner-continer mt-4" >
                 <h2 className="title-category">
                     <blod>SẢN PHẨM MỚI:</blod>
                 </h2>
@@ -76,11 +79,11 @@ const MainPage = () => {
             <SliderProduct  products={likeProducts}/>
             <div className="liner-continer">
                 <h2 className="title-category">
-                    <blod>:</blod>
+                    <blod>SẢN PHẨM NGẪU NHIÊN:</blod>
                 </h2>
             </div>
             <SliderProduct  products={otherProducts}/>
-        </MDBContainer>
+        </MDBContainer></>
     );
 }
 export default MainPage;
