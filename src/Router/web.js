@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import { loadProduct, ProductDetail } from "../Component/ProductDetail";
 import CartPage from "../Page/CartPage";
 import ListProductPage, { loadProductsByCategory } from "../Page/ListProductPage";
 import IntroducePage from "../Page/IntroducePage";
@@ -8,6 +7,8 @@ import { loadCategories } from "../store/Action";
 import { loadProductsBySearch } from "../Component/Search";
 import LoginPage from "../Page/LoginPage";
 import MainPage from "../Page/MainPage";
+import UserPage from "../Page/UserPage";
+import DetailProductPage, { loadProduct } from "../Page/DetailProductPage";
 
 export const webRouter = createBrowserRouter([{
     path: '/',
@@ -17,9 +18,9 @@ export const webRouter = createBrowserRouter([{
         element: <ListProductPage />,
         loader: loadProductsByCategory
     }, {
-        path: 'san-pham/:idProduct',
-        element: <ProductDetail />,
-        loader: loadProduct
+        path: ':urlCategory/:urlParam',
+        element: <DetailProductPage />,
+        loader: loadProduct,
     }, {
         path: 'gio-hang',
         element: <CartPage />
@@ -43,6 +44,10 @@ export const webRouter = createBrowserRouter([{
     }, {
         path: 'trang-chu',
         element: <MainPage />
+
+    }, {
+        path: 'ca-nhan',
+        element: <UserPage />
     }
     ]
 
