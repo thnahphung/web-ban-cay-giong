@@ -2,22 +2,29 @@ import React, { useState } from 'react';
 import { MDBTypography, MDBBox, MDBBtn, MDBInput, MDBContainer } from 'mdbreact';
 import Rating from '../Rating';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCart } from '../../store/Action';
+import { addCart, addfavouriteProducts } from '../../store/Action';
 
 
 const Introduce = (data) => {
     const product = data.product;
+    const favouriteProducts = useSelector(state => state.favouriteProducts);
     const cart = useSelector(state => state.cart);
     const [amount, setAmount] = useState();
 
     const dispatch = useDispatch();
 
-    function handleAdd(product) {
+    function handleAdd() {
         let quantity = parseInt(amount.value);
         const item = cart.find(item => item.product.id === product.id);
         if (item === undefined)
             dispatch(addCart(product, quantity));
         else dispatch(addCart(product, item.amount + quantity));
+    }
+    function handleAddFavProduct() {
+        dispatch(addfavouriteProducts(product));
+    }
+    function isFav() {
+        return favouriteProducts.findIndex(item => item.id === product.id) === -1;
     }
     return (
 
@@ -64,10 +71,16 @@ const Introduce = (data) => {
                     max={10}
                     inputRef={setAmount}
                 />
-                <MDBBtn onClick={() => handleAdd(product)}>Thêm vào giỏ hàng
+                <MDBBtn onClick={handleAdd}>Thêm vào giỏ hàng
                 </MDBBtn>
                 {/* <h1><i class="fas fa-heart" ></i></h1> */}
-                <h1> <i className="far fa-heart cursor-pointer"></i></h1>
+                {
+                    isFav() ?
+                        <h1><i className="far fa-heart cursor-pointer " style={{ color: "#2BBBAD" }} onClick={handleAddFavProduct}></i></h1>
+                        :
+                        <h1><i class="fas fa-heart cursor-pointer" style={{ color: "#2BBBAD" }} onClick={handleAddFavProduct} ></i></h1>
+                }
+                {/* <h1><i className="far fa-heart cursor-pointer" onClick={handleAddFavProduct}></i></h1> */}
             </div>
 
 

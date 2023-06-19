@@ -13,6 +13,7 @@ import SuccessfulPage from "../Page/SuccessfulPage";
 import PageNotFound from "../Page/PageNotFound";
 import UserPage from "../Page/UserPage";
 import DetailProductPage, { loadProduct } from "../Page/DetailProductPage";
+import FavouriteProductPage from "../Page/FavouriteProductsPage";
 
 export const webRouter = createBrowserRouter(
     [
@@ -65,6 +66,10 @@ export const webRouter = createBrowserRouter(
                 {
                     path: 'ca-nhan',
                     element: <UserPage />
+                },
+                {
+                    path: 'san-pham-yeu-thich',
+                    element: <FavouriteProductPage />
                 }, {
                     path: '*',
                     element: <PageNotFound />

@@ -1,7 +1,7 @@
-import {MDBBtn, MDBIcon} from "mdbreact";
+import { MDBBtn, MDBIcon } from "mdbreact";
 import React from "react";
-import {NavLink} from "react-router-dom";
-import {useSelector} from "react-redux";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const BtnCart = (data) => {
     const cart = useSelector(state => state.cart);
@@ -18,7 +18,7 @@ const BtnCart = (data) => {
         <NavLink to={`/gio-hang`}>
             <MDBBtn rounded color={"danger"}>
                 {sum().toLocaleString('en-US').replaceAll(',', '.')} Đ
-                <MDBIcon icon="shopping-cart" className={`ml-2`}/>
+                <MDBIcon icon="shopping-cart" className={`ml-2`} />
             </MDBBtn>
         </NavLink>
     )
