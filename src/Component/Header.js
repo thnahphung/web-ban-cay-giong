@@ -25,6 +25,9 @@ const Header = () => {
                     <MDBNavItem>
                         <NavLink to="/tin-tuc" className={`nav-link`}>Tin tức</NavLink>
                     </MDBNavItem>
+                    <MDBNavItem>
+                        <NavLink to="/tim-don-hang" className={`nav-link`}>Tìm đơn hàng</NavLink>
+                    </MDBNavItem>
                 </MDBNav>
             </div>
         </header>

@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import {
     MDBCard,
     MDBCardBody,
@@ -10,147 +10,96 @@ import {
     MDBBadge,
     MDBIcon,
     MDBBtn,
-    MDBScrollbar,
+    MDBScrollbar, MDBView,
 } from "mdbreact";
 import "../style/ChatPage.css"
+import logo from '../images/logo.png'
 
-class ChatBox extends Component {
-    constructor() {
-        super();
-        this.state = {
-            friends: [
-                {
-                    name: "John Doe",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-8",
-                    message: "Hello, Are you there?",
-                    when: "Just now",
-                    toRespond: 1,
-                    seen: false,
-                    active: true,
-                },
-                {
-                    name: "Danny Smith",
-                    message: "Lorem ipsum dolor sit",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-1",
-                    when: "5 min ago",
-                    toRespond: 0,
-                    seen: false,
-                    active: false,
-                },
-                {
-                    name: "Alex Steward",
-                    message: "Lorem ipsum dolor sit",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-2",
-                    when: "Yesterday",
-                    toRespond: 0,
-                    seen: false,
-                    active: false,
-                },
-                {
-                    name: "Ashley Olsen",
-                    message: "Lorem ipsum dolor sit",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-3",
-                    when: "Yesterday",
-                    toRespond: 0,
-                    seen: false,
-                    active: false,
-                },
-                {
-                    name: "Kate Moss",
-                    message: "Lorem ipsum dolor sit",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-4",
-                    when: "Yesterday",
-                    toRespond: 0,
-                    seen: true,
-                    active: false,
-                },
-                {
-                    name: "Lara Croft",
-                    message: "Lorem ipsum dolor sit",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-5",
-                    when: "Yesterday",
-                    toRespond: 0,
-                    seen: false,
-                    active: false,
-                },
-                {
-                    name: "Brad Pitt",
-                    message: "Lorem ipsum dolor sit",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-6",
-                    when: "5 min ago",
-                    toRespond: 0,
-                    seen: true,
-                    active: false,
-                },
-                {
-                    name: "Ken Ditto",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/img(3).webp",
-                    message: "Hello, Are you there?",
-                    when: "Yesterday",
-                    toRespond: 0,
-                    seen: false,
-                    active: false,
-                },
-                {
-                    name: "Marta Wozniak",
-                    message: "Lorem ipsum dolor sit.",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/img(2).webp",
-                    when: "5 min ago",
-                    toRespond: 0,
-                    seen: false,
-                    active: false,
-                },
-            ],
-            messages: [
-                {
-                    author: "Brad Pitt",
-                    avatar: "https://toigingiuvedep.vn/wp-content/uploads/2022/01/anh-meo-cute.jpg",
-                    when: "12 mins ago",
-                    message:
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                },
-                {
-                    author: "Lara Croft",
-                    avatar: "https://inkythuatso.com/uploads/thumbnails/800/2022/05/a732e392b657be4fceffdffd214e5e21-08-23-41-28.jpg",
-                    when: "13 mins ago",
-                    message:
-                        " Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-                },
-                {
-                    author: "Brad Pitt",
-                    avatar: "https://toigingiuvedep.vn/wp-content/uploads/2022/01/anh-meo-cute.jpg",
-                    when: "14 mins ago",
-                    message:
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                },
-                {
-                    author: "Lara Croft",
-                    avatar: "https://inkythuatso.com/uploads/thumbnails/800/2022/05/a732e392b657be4fceffdffd214e5e21-08-23-41-28.jpg",
-                    when: "16 mins ago",
-                    message:
-                        " Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-                },
-                {
-                    author: "Brad Pitt",
-                    avatar: "https://toigingiuvedep.vn/wp-content/uploads/2022/01/anh-meo-cute.jpg",
-                    when: "17 mins ago",
-                    message:
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                },
-            ],
-        };
+const ChatBox = () => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+
+    const [isDisplay, setIsDisplay] = useState(false);
+    const messages = [
+        {
+            author: "Seeds Sprout",
+            avatar: logo,
+            when: "16 phút trước",
+            message:
+                "Bạn có thắc mắc gì bên mình sẽ giải đáp.",
+        },
+        {
+            author: user.name,
+            avatar: user.avatar,
+            when: "17 phút trước",
+            message:
+                "Chào shop, bên shop có bán mít giống không ạ",
+        },
+        {
+            author: "Seeds Sprout",
+            avatar: logo,
+            when: "16 phút trước",
+            message:
+                "Bên mình có bán mít giống bạn nha, giá hiện tại là 90.000đ",
+        },
+        {
+            author: user.name,
+            avatar: user.avatar,
+            when: "15 phút trước",
+            message:
+                "Bên mình có bán các loại hoa nào nhỉ.",
+        },
+        {
+            author: "Seeds Sprout",
+            avatar: logo,
+            when: "14 phút trước",
+            message:
+                "Bên mình có các loại như: hoa cúc, hoa anh đào, hoa đào bạch ạ.",
+        },
+        {
+            author: user.name,
+            avatar: user.avatar,
+            when: "13 phút trước",
+            message:
+                "OK shop, vậy giờ mình sẽ đặt hàng, cảm ơn shop",
+        },
+        {
+            author: "Seeds Sprout",
+            avatar: logo,
+            when: "12 phút trước",
+            message:
+                "Cảm ơn bạn đã tin tưởng shop.",
+        }
+    ]
+
+    function handelChangeDisplay() {
+        setIsDisplay(!isDisplay);
     }
 
-    render() {
-        return (
+    if (isDisplay === false) {
+        return (<div style={{position: 'fixed', bottom: '10px', right: '10px', zIndex: '2000'}}>
+            <MDBView waves
+                     onClick={handelChangeDisplay}>
+                <img
+                    style={{height: '60px', borderRadius: '50%'}}
+
+                    src={logo}
+                    alt="avatar"
+                    className="img-fluid"
+                />
+            </MDBView>
+        </div>)
+    }
+
+    return (
+        <div style={{width: '400px', position: 'fixed', bottom: '0', right: '75px', zIndex: '1000'}}>
             <MDBCard className="grey lighten-3 chat-room">
                 <MDBCardBody>
-                    <MDBRow className="px-lg-2 px-2">
-                        <MDBCol md="6" xl="8" className="pl-md-3 mt-4 mt-md-0 px-lg-auto">
+                    <MDBRow>
+                        <MDBCol>
                             <div className="scrollable-chat">
                                 <MDBScrollbar>
                                     <MDBListGroup className="list-unstyled pl-3 pr-3">
-                                        {this.state.messages.map((message) => (
+                                        {messages.map((message) => (
                                             <ChatMessage
                                                 key={message.author + message.when}
                                                 message={message}
@@ -164,23 +113,35 @@ class ChatBox extends Component {
                     className="form-control pl-2 my-0"
                     id="exampleFormControlTextarea2"
                     rows="3"
-                    placeholder="Type your message here..."
-                />
+                    placeholder="Nhập tin nhắn..."/>
                                 <MDBBtn
                                     color="info"
                                     rounded
                                     size="sm"
                                     className="float-right mt-4"
                                 >
-                                    Send
+                                    Gửi
                                 </MDBBtn>
                             </div>
                         </MDBCol>
                     </MDBRow>
                 </MDBCardBody>
             </MDBCard>
-        );
-    }
+            <div style={{position: 'fixed', bottom: '10px', right: '10px', zIndex: '2000'}}>
+                <MDBView waves
+                         onClick={handelChangeDisplay}>
+                    <img
+                        style={{height: '60px', borderRadius: '50%'}}
+
+                        src={logo}
+                        alt="avatar"
+                        className="img-fluid"
+                    />
+                </MDBView>
+            </div>
+        </div>
+    )
+
 }
 
 const ChatMessage = ({message: {author, avatar, when, message}}) => (
