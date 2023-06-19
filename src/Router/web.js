@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import { loadProduct, ProductDetail } from "../Component/ProductDetail";
 import CartPage from "../Page/CartPage";
 import ListProductPage, { loadProductsByCategory } from "../Page/ListProductPage";
 import IntroducePage from "../Page/IntroducePage";
@@ -26,8 +25,8 @@ export const webRouter = createBrowserRouter(
                     element: <ListProductPage />,
                     loader: loadProductsByCategory
                 }, {
-                    path: 'san-pham/:idProduct',
-                    element: <ProductDetail />,
+                    path: ':urlCategory/:urlParam',
+                    element: <DetailProductPage />,
                     loader: loadProduct
                 }, {
                     path: 'gio-hang',
