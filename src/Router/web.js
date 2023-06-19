@@ -14,7 +14,6 @@ import PageNotFound from "../Page/PageNotFound";
 import UserPage from "../Page/UserPage";
 import DetailProductPage, { loadProduct } from "../Page/DetailProductPage";
 import SearchOrderPage from "../Page/SearchOrderPage";
-import DetailProductPage, { loadProduct } from "../Page/DetailProductPage";
 import FavouriteProductPage from "../Page/FavouriteProductsPage";
 
 export const webRouter = createBrowserRouter(

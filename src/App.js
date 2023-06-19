@@ -9,7 +9,7 @@ function App() {
         <Fragment>
             <Header />
             <Outlet />
-            <ChatBox />
+            < ChatBox />
             <Footer />
         </Fragment>
     );
