@@ -64,7 +64,6 @@ const MainPage = () => {
 
     return ( <> <CarouselPage/>
         <MDBContainer>
-
             <div className="liner-continer mt-4" >
                 <h2 className="title-category">
                     <blod>SẢN PHẨM MỚI:</blod>

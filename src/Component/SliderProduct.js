@@ -36,7 +36,7 @@ const SliderProduct = (data) => {
             <Loading/>
         </div>)
     return (
-        <MDBCarousel activeItem={1} length={3} slide={true} showControls={true} showIndicators={false} multiItem>
+        <MDBCarousel activeItem={1} length={3} slide={true} showControls={true} showIndicators={false} multiItem  >
             <MDBCarouselInner>
                 <MDBRow>
                     <MDBCarouselItem itemId="1">
